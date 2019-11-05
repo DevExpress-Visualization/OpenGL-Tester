@@ -348,7 +348,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
                 GL.ReadBuffer(GL.BACK);
                 GL.ReadPixels(0, 0, bitmap.Width, bitmap.Height, format, GL.UNSIGNED_BYTE, srcData.Scan0);
                 bitmap.UnlockBits(srcData);
-                bitmap.RotateFlip(RotateFlipType.RotateNoneFlipY);
                 graphics.DrawImageUnscaled(bitmap, Point.Empty);
             }
         }
