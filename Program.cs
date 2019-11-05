@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using DevExpress.XtraCharts.Native;
+using DevExpress.XtraCharts.GLGraphics;
 
 namespace OpenGLTester {
     class Program {
@@ -18,9 +19,7 @@ namespace OpenGLTester {
                     }
                     if(result) {
                         bmp.Save("Test.png", ImageFormat.Png);
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Test.png was created.");
-                        Console.ResetColor();
+                        PlatformUtils.ConsoleWriteLine("Test.png was created.", ConsoleColor.Green);
                     }
                 }
             }

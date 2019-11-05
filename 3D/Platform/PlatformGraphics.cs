@@ -18,6 +18,26 @@ namespace DevExpress.XtraCharts.GLGraphics {
         public static bool IsMacOS { get { return RuntimeInformation.IsOSPlatform (OSPlatform.OSX); } }
         public static bool IsLinux { get { return RuntimeInformation.IsOSPlatform (OSPlatform.Linux); } }
 
+        public static void ConsoleWriteLine(string text, ConsoleColor? color = null) {
+            if(color.HasValue)
+                Console.ForegroundColor = color.Value;
+            Console.WriteLine(text);
+            if(color.HasValue)
+                Console.ResetColor();
+        }
+        public static void ConsoleWrite(string text, ConsoleColor? color = null) {
+            if(color.HasValue)
+                Console.ForegroundColor = color.Value;
+            Console.Write(text);
+            if(color.HasValue)
+                Console.ResetColor();
+        }
+        public static void ConsoleOk() {
+            ConsoleWriteLine("OK", ConsoleColor.Green);
+        }
+        public static void ConsoleError(string error) {
+            ConsoleWriteLine(error, ConsoleColor.Red);
+        }
         public static IPlatformGraphics CreatePlatformGraphics(Graphics graphics, Rectangle bounds, IntPtr windowDC) {
             if (IsWindows)
                 return new WGLGraphics(graphics, windowDC);

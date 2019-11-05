@@ -78,9 +78,12 @@ namespace DevExpress.XtraCharts.GLGraphics.Platform {
         public static bool Available {
             get {
                 try {
+                    PlatformUtils.ConsoleWrite("EGLImport.GetCurrentContext()...");
                     EGLImport.GetCurrentContext();
+                    PlatformUtils.ConsoleOk();
                 }
-                catch (Exception) {
+                catch (Exception ex) {
+                    PlatformUtils.ConsoleError(ex.Message);
                     return false;
                 }
                 return true;
@@ -128,6 +131,11 @@ namespace DevExpress.XtraCharts.GLGraphics.Platform {
 
 namespace DevExpress.XtraCharts.GLGraphics {
     public class EGLGraphics : IPlatformGraphics {
+        static void WriteEGLErrorToConsole() {
+            EGL.Errors errors = EGL.GetError();
+            PlatformUtils.ConsoleWriteLine("EGL Error: " + errors.ToString());
+        }
+
         public static bool Available { get { return EGL.Available; } }
 
         readonly Graphics graphics;
@@ -140,11 +148,21 @@ namespace DevExpress.XtraCharts.GLGraphics {
         public bool Initialized { get { return display != IntPtr.Zero && HasPBuffer && context != IntPtr.Zero; } }
 
         public EGLGraphics(Graphics graphics, Rectangle bounds) {
+            PlatformUtils.ConsoleWriteLine("Create EGLGraphics...");
             this.graphics = graphics;
             this.bounds = bounds;
-            int major, minor;
+            PlatformUtils.ConsoleWrite("EGL.GetDisplay()...");
             display = EGL.GetDisplay();
-            if (EGL.Initialize(display, out major, out minor) && major >= 1 && minor >= 4) {
+            PlatformUtils.ConsoleWriteLine(display.ToString());
+            WriteEGLErrorToConsole();
+            int major, minor;
+            PlatformUtils.ConsoleWrite("EGL.Initialize()...");
+            bool initialized = EGL.Initialize(display, out major, out minor);
+            PlatformUtils.ConsoleWriteLine(initialized.ToString(), initialized ? ConsoleColor.Green : ConsoleColor.Red);
+            bool isValidVersion = major >= 1 && minor >= 4;
+            PlatformUtils.ConsoleWriteLine(string.Format("Version: {0}.{1}", major, minor), isValidVersion ? ConsoleColor.Green : ConsoleColor.Red);
+            WriteEGLErrorToConsole();
+            if (initialized && isValidVersion) {
                 int[] attributes = new int[] {
                     EGL.SURFACE_TYPE, EGL.PBUFFER_BIT,
                     EGL.RED_SIZE, 8,
@@ -158,15 +176,31 @@ namespace DevExpress.XtraCharts.GLGraphics {
                 };
                 int configsCount;
                 IntPtr config;
-                if (EGL.ChooseConfig(display, attributes, out config, 1, out configsCount)) {
+                PlatformUtils.ConsoleWrite("EGL.Initialize()...");
+                bool hasConfig = EGL.ChooseConfig(display, attributes, out config, 1, out configsCount);
+                PlatformUtils.ConsoleWriteLine(hasConfig.ToString(), hasConfig ? ConsoleColor.Green : ConsoleColor.Red);
+                PlatformUtils.ConsoleWriteLine(string.Format("{0} configs, configs pointer: {1}", configsCount, config.ToString()));
+                WriteEGLErrorToConsole();
+                if (hasConfig) {
                     int[] pBufferAttributes = new int[] {
                         EGL.WIDTH, bounds.Width,
                         EGL.HEIGHT, bounds.Height,
                         EGL.NONE
                     };
+                    PlatformUtils.ConsoleWrite("EGL.CreatePbufferSurface()...");
                     pBuffer = EGL.CreatePbufferSurface(display, config, pBufferAttributes);
-                    if (HasPBuffer && EGL.BindAPI(EGL.OPENGL_API))
+                    PlatformUtils.ConsoleWriteLine(pBuffer.ToString(), HasPBuffer ? ConsoleColor.Green : ConsoleColor.Red);
+                    WriteEGLErrorToConsole();
+                    PlatformUtils.ConsoleWrite("EGL.BindAPI()...");
+                    bool hasAPI = EGL.BindAPI(EGL.OPENGL_API);
+                    PlatformUtils.ConsoleWriteLine(hasAPI.ToString(), hasAPI ? ConsoleColor.Green : ConsoleColor.Red);
+                    WriteEGLErrorToConsole();
+                    if (HasPBuffer && hasAPI){
+                        PlatformUtils.ConsoleWrite("EGL.CreateContext()...");
                         context = EGL.CreateContext(display, config, IntPtr.Zero, null);
+                        PlatformUtils.ConsoleWriteLine(context.ToString(), Initialized ? ConsoleColor.Green : ConsoleColor.Red);
+                        WriteEGLErrorToConsole();
+                    }
                 }
             }
         }
