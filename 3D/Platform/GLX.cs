@@ -266,6 +266,8 @@ namespace DevExpress.XtraCharts.GLGraphics {
         public bool Initialized { get { return display != IntPtr.Zero && Drawable != IntPtr.Zero && context != IntPtr.Zero; } }
 
         public GLXGraphics(Graphics graphics, Rectangle bounds) {
+            PlatformUtils.ConsoleWriteLine("Create GLXGraphics...");
+
             this.graphics = graphics;
             this.bounds = bounds;
 
