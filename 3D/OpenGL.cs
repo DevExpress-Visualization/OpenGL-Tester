@@ -18,14 +18,8 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport(OpenGL32, EntryPoint = "glDisable")]
         public static extern void Disable(int cap);
         [DllImport(OpenGL32, EntryPoint = "glGetIntegerv")]
-#if DEBUGTEST //DEMO_REMOVE   
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void GetIntegerv(int pname, [Out] int[] param);
         [DllImport(OpenGL32, EntryPoint = "glGetDoublev")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif  //DEMO_REMOVE
         public static extern void GetDoublev(int pname, [Out] double[] param);
         [DllImport(OpenGL32, EntryPoint = "glClearColor")]
         public static extern void ClearColor(float red, float green, float blue, float alpha);
@@ -48,14 +42,8 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport(OpenGL32, EntryPoint = "glLoadIdentity")]
         public static extern void LoadIdentity();
         [DllImport(OpenGL32, EntryPoint = "glLoadMatrixd")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void LoadMatrixd([In] double[] m);
         [DllImport(OpenGL32, EntryPoint = "glMultMatrixd")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void MultMatrixd([In] double[] m);
         [DllImport(OpenGL32, EntryPoint = "glTranslated")]
         public static extern void Translated(double x, double y, double z);
@@ -76,9 +64,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport(OpenGL32, EntryPoint = "glColor4b")]
         public static extern void Color4b(byte read, byte green, byte blue, byte alpha);
         [DllImport(OpenGL32, EntryPoint = "glColor4ub")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void Color4ub(byte read, byte green, byte blue, byte alpha);
         [DllImport(OpenGL32, EntryPoint = "glVertex3d")]
         public static extern void Vertex3d(double x, double y, double z);
@@ -101,41 +86,20 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport(OpenGL32, EntryPoint = "glBlendFunc")]
         public static extern void BlendFunc(int sfactor, int dfactor);
         [DllImport(OpenGL32, EntryPoint = "glLightModeli")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void LightModeli(int pname, int param);
         [DllImport(OpenGL32, EntryPoint = "glLightModelfv")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void LightModelfv(int pname, float[] param);
         [DllImport(OpenGL32, EntryPoint = "glLightf")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void Lightf(int light, int pname, float param);
         [DllImport(OpenGL32, EntryPoint = "glLightfv")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void Lightfv(int light, int pname, [In] float[] param);
         [DllImport(OpenGL32, EntryPoint = "glColorMaterial")]
         public static extern void ColorMaterial(int face, int mode);
         [DllImport(OpenGL32, EntryPoint = "glMaterialf")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void Materialf(int face, int pname, float param);
         [DllImport(OpenGL32, EntryPoint = "glMaterialfv")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void Materialfv(int face, int pname, [In] float[] param);
         [DllImport(OpenGL32, EntryPoint = "glPixelStorei")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void PixelStorei(int pname, int param);
         [DllImport(OpenGL32, EntryPoint = "glTexImage1D")]
         public static extern void TexImage1D(int target, int level, int internalformat, int width, int border, int format, int type, [In] float[] pixels);
@@ -156,14 +120,8 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport(OpenGL32, EntryPoint = "glBindTexture")]
         public static extern void BindTexture(int target, uint texture);
         [DllImport(OpenGL32, EntryPoint = "glTexParameteri")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void TexParameteri(int target, int pname, int param);
         [DllImport(OpenGL32, EntryPoint = "glTexEnvf")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void TexEnvf(int target, int pname, float param);
         [DllImport(OpenGL32, EntryPoint = "glHint")]
         public static extern void Hint(int target, int mode);
@@ -172,9 +130,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport(OpenGL32, EntryPoint = "glStencilFunc")]
         public static extern void StencilFunc(int func, int refer, uint mask);
         [DllImport(OpenGL32, EntryPoint = "glAccum")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void Accum(int operation, float val);
         [DllImport(OpenGL32, EntryPoint = "glClearAccum")]
         public static extern void ClearAccum(float red, float green, float blue, float alpha);
@@ -185,9 +140,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport(OpenGL32, EntryPoint = "glDrawPixels")]
         public static extern void DrawPixels(int width, int height, int format, int type, [In] byte[] pixels);
         [DllImport(OpenGL32, EntryPoint = "glRasterPos2i")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void RasterPosi(int x, int y);
         [DllImport(OpenGL32, EntryPoint = "glReadBuffer")]
         public static extern void ReadBuffer(int mode);
@@ -202,9 +154,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport(OpenGL32, EntryPoint = "glDepthMask")]
         public static extern void DepthMask(bool flag);
         [DllImport(OpenGL32, EntryPoint = "glGetBooleanv")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void GetBooleanv(int pname, [Out] bool[] pars);
         [DllImport(OpenGL32, EntryPoint = "glGetError")]
         public static extern int GetError();
@@ -222,14 +171,8 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport (LibGL, EntryPoint = "glDisable")]
         public static extern void Disable (int cap);
         [DllImport (LibGL, EntryPoint = "glGetIntegerv")]
-#if DEBUGTEST //DEMO_REMOVE   
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void GetIntegerv (int pname, [Out] int [] param);
         [DllImport (LibGL, EntryPoint = "glGetDoublev")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif  //DEMO_REMOVE
         public static extern void GetDoublev (int pname, [Out] double [] param);
         [DllImport (LibGL, EntryPoint = "glClearColor")]
         public static extern void ClearColor (float red, float green, float blue, float alpha);
@@ -252,14 +195,8 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport (LibGL, EntryPoint = "glLoadIdentity")]
         public static extern void LoadIdentity ();
         [DllImport (LibGL, EntryPoint = "glLoadMatrixd")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void LoadMatrixd ([In] double [] m);
         [DllImport (LibGL, EntryPoint = "glMultMatrixd")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void MultMatrixd ([In] double [] m);
         [DllImport (LibGL, EntryPoint = "glTranslated")]
         public static extern void Translated (double x, double y, double z);
@@ -280,9 +217,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport (LibGL, EntryPoint = "glColor4b")]
         public static extern void Color4b (byte read, byte green, byte blue, byte alpha);
         [DllImport (LibGL, EntryPoint = "glColor4ub")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void Color4ub (byte read, byte green, byte blue, byte alpha);
         [DllImport (LibGL, EntryPoint = "glVertex3d")]
         public static extern void Vertex3d (double x, double y, double z);
@@ -305,41 +239,20 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport (LibGL, EntryPoint = "glBlendFunc")]
         public static extern void BlendFunc (int sfactor, int dfactor);
         [DllImport (LibGL, EntryPoint = "glLightModeli")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void LightModeli (int pname, int param);
         [DllImport (LibGL, EntryPoint = "glLightModelfv")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void LightModelfv (int pname, float [] param);
         [DllImport (LibGL, EntryPoint = "glLightf")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void Lightf (int light, int pname, float param);
         [DllImport (LibGL, EntryPoint = "glLightfv")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void Lightfv (int light, int pname, [In] float [] param);
         [DllImport (LibGL, EntryPoint = "glColorMaterial")]
         public static extern void ColorMaterial (int face, int mode);
         [DllImport (LibGL, EntryPoint = "glMaterialf")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void Materialf (int face, int pname, float param);
         [DllImport (LibGL, EntryPoint = "glMaterialfv")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void Materialfv (int face, int pname, [In] float [] param);
         [DllImport (LibGL, EntryPoint = "glPixelStorei")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void PixelStorei (int pname, int param);
         [DllImport (LibGL, EntryPoint = "glTexImage1D")]
         public static extern void TexImage1D (int target, int level, int internalformat, int width, int border, int format, int type, [In] float [] pixels);
@@ -360,14 +273,8 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport (LibGL, EntryPoint = "glBindTexture")]
         public static extern void BindTexture (int target, uint texture);
         [DllImport (LibGL, EntryPoint = "glTexParameteri")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void TexParameteri (int target, int pname, int param);
         [DllImport (LibGL, EntryPoint = "glTexEnvf")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void TexEnvf (int target, int pname, float param);
         [DllImport (LibGL, EntryPoint = "glHint")]
         public static extern void Hint (int target, int mode);
@@ -376,9 +283,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport (LibGL, EntryPoint = "glStencilFunc")]
         public static extern void StencilFunc (int func, int refer, uint mask);
         [DllImport (LibGL, EntryPoint = "glAccum")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void Accum (int operation, float val);
         [DllImport (LibGL, EntryPoint = "glClearAccum")]
         public static extern void ClearAccum (float red, float green, float blue, float alpha);
@@ -389,9 +293,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport (LibGL, EntryPoint = "glDrawPixels")]
         public static extern void DrawPixels (int width, int height, int format, int type, [In] byte [] pixels);
         [DllImport (LibGL, EntryPoint = "glRasterPos2i")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void RasterPosi (int x, int y);
         [DllImport (LibGL, EntryPoint = "glReadBuffer")]
         public static extern void ReadBuffer (int mode);
@@ -406,9 +307,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport (LibGL, EntryPoint = "glDepthMask")]
         public static extern void DepthMask (bool flag);
         [DllImport (LibGL, EntryPoint = "glGetBooleanv")]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif //DEMO_REMOVE
         public static extern void GetBooleanv (int pname, [Out] bool [] pars);
         [DllImport (LibGL, EntryPoint = "glGetError")]
         public static extern int GetError ();
@@ -631,9 +529,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
                 GLImport_Win.Disable(cap);
         }
         [SecuritySafeCritical]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif  //DEMO_REMOVE
         public static void GetIntegerv(int pname, int[] param) {
             if (PlatformUtils.IsLinux)
                 GLImport_Linux.GetIntegerv(pname, param);
@@ -641,9 +536,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
                 GLImport_Win.GetIntegerv(pname, param);
         }
         [SecuritySafeCritical]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif  //DEMO_REMOVE
         public static void GetDoublev(int pname, [Out] double[] param) {
             if (PlatformUtils.IsLinux)
                 GLImport_Linux.GetDoublev(pname, param);
@@ -721,9 +613,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
                 GLImport_Win.LoadIdentity(); 
         }
         [SecuritySafeCritical]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif  //DEMO_REMOVE
         public static void LoadMatrixd([In] double[] m) { 
             if (PlatformUtils.IsLinux)
                 GLImport_Linux.LoadMatrixd(m);
@@ -731,9 +620,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
                 GLImport_Win.LoadMatrixd(m);
         }
         [SecuritySafeCritical]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif  //DEMO_REMOVE
         public static void MultMatrixd([In] double[] m) { 
             if (PlatformUtils.IsLinux)
                 GLImport_Linux.MultMatrixd(m); 
@@ -804,9 +690,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
                 GLImport_Win.Color4b(read, green, blue, alpha);
         }
         [SecuritySafeCritical]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif  //DEMO_REMOVE
         public static void Color4ub(byte read, byte green, byte blue, byte alpha) { 
             if (PlatformUtils.IsLinux)
                 GLImport_Linux.Color4ub(read, green, blue, alpha); 
@@ -884,9 +767,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
                 GLImport_Win.BlendFunc(sfactor, dfactor);
         }
         [SecuritySafeCritical]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif  //DEMO_REMOVE
         public static void LightModeli(int pname, int param) { 
             if (PlatformUtils.IsLinux)
                 GLImport_Linux.LightModeli(pname, param);
@@ -894,9 +774,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
                 GLImport_Win.LightModeli(pname, param);
         }
         [SecuritySafeCritical]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif  //DEMO_REMOVE
         public static void LightModelfv(int pname, float[] param) {
             if (PlatformUtils.IsLinux)
                 GLImport_Linux.LightModelfv(pname, param);
@@ -904,9 +781,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
                 GLImport_Win.LightModelfv(pname, param);
         }
         [SecuritySafeCritical]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif  //DEMO_REMOVE
         public static void Lightf(int light, int pname, float param) { 
             if (PlatformUtils.IsLinux)
                 GLImport_Linux.Lightf(light, pname, param);
@@ -914,9 +788,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
                 GLImport_Win.Lightf(light, pname, param);
         }
         [SecuritySafeCritical]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif  //DEMO_REMOVE
         public static void Lightfv(int light, int pname, float[] param) { 
             if (PlatformUtils.IsLinux)
                 GLImport_Linux.Lightfv(light, pname, param);
@@ -931,9 +802,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
                 GLImport_Win.ColorMaterial(face, mode);
         }
         [SecuritySafeCritical]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif  //DEMO_REMOVE
         public static void Materialf(int face, int pname, float param) { 
             if (PlatformUtils.IsLinux)
                 GLImport_Linux.Materialf(face, pname, param);
@@ -941,9 +809,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
                 GLImport_Win.Materialf(face, pname, param);
         }
         [SecuritySafeCritical]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif  //DEMO_REMOVE
         public static void Materialfv(int face, int pname, float[] param) { 
             if (PlatformUtils.IsLinux)
                 GLImport_Linux.Materialfv(face, pname, param);
@@ -951,9 +816,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
                 GLImport_Win.Materialfv(face, pname, param);
         }
         [SecuritySafeCritical]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif  //DEMO_REMOVE
         public static void PixelStorei(int pname, int param) { 
             if (PlatformUtils.IsLinux)
                 GLImport_Linux.PixelStorei(pname, param);
@@ -1024,9 +886,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
                 GLImport_Win.BindTexture(target, texture);
         }
         [SecuritySafeCritical]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif  //DEMO_REMOVE
         public static void TexParameteri(int target, int pname, int param) { 
             if (PlatformUtils.IsLinux)
                 GLImport_Linux.TexParameteri(target, pname, param);
@@ -1034,9 +893,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
                 GLImport_Win.TexParameteri(target, pname, param);
         }
         [SecuritySafeCritical]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif  //DEMO_REMOVE
         public static void TexEnvf(int target, int pname, float param) { 
             if (PlatformUtils.IsLinux)
                 GLImport_Linux.TexEnvf(target, pname, param);
@@ -1051,9 +907,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
                 GLImport_Win.Hint(target, mode); 
         }
         [SecuritySafeCritical]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif  //DEMO_REMOVE
         public static void StencilOp(int fail, int zfail, int zpass) { 
             if (PlatformUtils.IsLinux)
                 GLImport_Linux.StencilOp(fail, zfail, zpass);
@@ -1068,9 +921,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
                 GLImport_Win.StencilFunc(func, refer, mask);
         }
         [SecuritySafeCritical]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif  //DEMO_REMOVE
         public static void Accum(int operation, float val) { 
             if (PlatformUtils.IsLinux)
                 GLImport_Linux.Accum(operation, val);
@@ -1078,9 +928,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
                 GLImport_Win.Accum(operation, val);
         }
         [SecuritySafeCritical]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif  //DEMO_REMOVE
         public static void ClearAccum(float red, float green, float blue, float alpha) { 
             if (PlatformUtils.IsLinux)
                 GLImport_Linux.ClearAccum(red, green, blue, alpha);
@@ -1109,9 +956,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
                 GLImport_Win.DrawPixels(width, height, format, type, pixels);
         }
         [SecuritySafeCritical]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif  //DEMO_REMOVE
         public static void RasterPosi(int x, int y) { 
             if (PlatformUtils.IsLinux)
                 GLImport_Linux.RasterPosi(x, y);
@@ -1161,9 +1005,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
                 GLImport_Win.DepthMask(flag);
         }
         [SecuritySafeCritical]
-#if DEBUGTEST //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
-#endif  //DEMO_REMOVE
         public static void GetBooleanv(int pname, bool[] pars) { 
             if (PlatformUtils.IsLinux)
                 GLImport_Linux.GetBooleanv(pname, pars);
@@ -1180,9 +1021,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
 
     [SuppressUnmanagedCodeSecurity]
     [SuppressMessage("SpellChecker", "CRRSP01")]
-#if DEBUGTEST //DEMO_REMOVE
-    [FxCopSpellCheckingIgnore]//DEMO_REMOVE
-#endif  //DEMO_REMOVE
     public class GLUImport_Win {
         const string Glu32 = "glu32.dll";
 
@@ -1234,9 +1072,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
 
     [SuppressUnmanagedCodeSecurity]
     [SuppressMessage("SpellChecker", "CRRSP01")]
-#if DEBUGTEST //DEMO_REMOVE
-    [FxCopSpellCheckingIgnore]//DEMO_REMOVE
-#endif  //DEMO_REMOVE
     public class GLUImport_Linux {
         const string LibGLU = "libGLU.so.1";
 

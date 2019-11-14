@@ -24,9 +24,6 @@ namespace DevExpress.XtraCharts.GLGraphics.Platform {
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool ChooseConfig(IntPtr display, int[] attributes, out IntPtr config, int configSize, out int configsCount);
         [DllImport(libEGL, EntryPoint = "eglCreatePbufferSurface")]
-#if DEBUGTEST                       //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore]  //DEMO_REMOVE
-#endif                              //DEMO_REMOVE
         public static extern IntPtr CreatePbufferSurface(IntPtr display, IntPtr config, int[] attributes);
         [DllImportAttribute(libEGL, EntryPoint = "eglDestroySurface")]
         [return: MarshalAsAttribute(UnmanagedType.I1)]
@@ -102,9 +99,6 @@ namespace DevExpress.XtraCharts.GLGraphics.Platform {
         public static bool ChooseConfig(IntPtr display, int[] attributes, out IntPtr config, int configSize, out int configsCount) {
             return EGLImport.ChooseConfig(display, attributes, out config, configSize, out configsCount);
         }
-#if DEBUGTEST                       //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore]  //DEMO_REMOVE
-#endif                              //DEMO_REMOVE
         public static IntPtr CreatePbufferSurface(IntPtr display, IntPtr config, int[] attributes) {
             return EGLImport.CreatePbufferSurface(display, config, attributes);
         }
@@ -133,7 +127,7 @@ namespace DevExpress.XtraCharts.GLGraphics {
     public class EGLGraphics : IPlatformGraphics {
         static void WriteEGLErrorToConsole() {
             EGL.Errors errors = EGL.GetError();
-            PlatformUtils.ConsoleWriteLine("EGL Error: " + errors.ToString());
+            PlatformUtils.ConsoleWriteLine("EGL Error: " + errors.ToString(), errors != EGL.Errors.EGL_SUCCESS ? ConsoleColor.Red : ConsoleColor.Green);
         }
 
         public static bool Available { get { return EGL.Available; } }

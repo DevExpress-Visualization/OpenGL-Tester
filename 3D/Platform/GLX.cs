@@ -48,14 +48,8 @@ namespace DevExpress.XtraCharts.GLGraphics.Platform {
         [DllImport(LibGL, EntryPoint = "glXChooseFBConfig")]
         public extern static IntPtr ChooseFBConfig(IntPtr display, int screen, int[] attribList, out int fbCount);
         [DllImport(LibGL, EntryPoint = "glXCreatePbuffer")]
-#if DEBUGTEST                       //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore]  //DEMO_REMOVE
-#endif                              //DEMO_REMOVE
         public extern static IntPtr CreatePbuffer(IntPtr display, IntPtr fbconfig, int[] attribList);
         [DllImport(LibGL, EntryPoint = "glXDestroyPbuffer")]
-#if DEBUGTEST                       //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore]  //DEMO_REMOVE
-#endif                              //DEMO_REMOVE
         public extern static void DestroyPbuffer(IntPtr display, IntPtr pbuffer);
     }
 
@@ -120,15 +114,9 @@ namespace DevExpress.XtraCharts.GLGraphics.Platform {
             }
             return IntPtr.Zero;
         }
-#if DEBUGTEST                       //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore]  //DEMO_REMOVE
-#endif                              //DEMO_REMOVE
         public static IntPtr CreatePbuffer(IntPtr display, IntPtr fbconfig, int[] attribList) {
             return GLXImport.CreatePbuffer(display, fbconfig, attribList);
         }
-#if DEBUGTEST                       //DEMO_REMOVE
-        [FxCopSpellCheckingIgnore]  //DEMO_REMOVE
-#endif                              //DEMO_REMOVE
         public static void DestroyPbuffer(IntPtr display, IntPtr pbuffer) {
             GLXImport.DestroyPbuffer(display, pbuffer);
         }
@@ -261,6 +249,11 @@ namespace DevExpress.XtraCharts.GLGraphics.Platform {
 
 namespace DevExpress.XtraCharts.GLGraphics {
     public class GLXGraphics : IPlatformGraphics {
+        static void WriteGLXErrorToConsole() {
+            int error = GL.GetError();
+            PlatformUtils.ConsoleWriteLine("GL Error: " + error.ToString(), error != 0 ? ConsoleColor.Red : ConsoleColor.Green);
+        }
+
         readonly Graphics graphics;
         readonly Rectangle bounds;
         readonly bool isMultiThread;
@@ -276,10 +269,22 @@ namespace DevExpress.XtraCharts.GLGraphics {
             this.graphics = graphics;
             this.bounds = bounds;
 
+            PlatformUtils.ConsoleWrite("GLX.XInitThreads()>0...");
             isMultiThread = GLX.XInitThreads() > 0;
+            PlatformUtils.ConsoleWriteLine(isMultiThread.ToString(), isMultiThread ? ConsoleColor.Green : ConsoleColor.Red);
+            WriteGLXErrorToConsole();
+
+            PlatformUtils.ConsoleWrite("GLX.XOpenDisplay()...");
             display = GLX.XOpenDisplay();
+            PlatformUtils.ConsoleWriteLine(display.ToString(), display != IntPtr.Zero ? ConsoleColor.Green : ConsoleColor.Red);
+            WriteGLXErrorToConsole();
+
             if (display != IntPtr.Zero) {
+                PlatformUtils.ConsoleWrite("GLX.XDefaultScreen()...");
                 int screen = GLX.XDefaultScreen(display);
+                PlatformUtils.ConsoleWriteLine(screen.ToString());
+                WriteGLXErrorToConsole();
+
                 Lock();
                 if (!CreateGLXOffscreenContext(screen))
                     CreateGLXWindowContext(screen, false);
@@ -296,13 +301,35 @@ namespace DevExpress.XtraCharts.GLGraphics {
                  (int)GLXAttribute.STENCIL_SIZE, 8,
                  (int)GLXAttribute.DOUBLEBUFFER,
                  0, 0
-             };
+            };
+
+            PlatformUtils.ConsoleWrite("GLX.XRootWindow()...");
             IntPtr rootWindow = GLX.XRootWindow(display, screen);
+            PlatformUtils.ConsoleWriteLine(rootWindow.ToString(), rootWindow != IntPtr.Zero ? ConsoleColor.Green : ConsoleColor.Red);
+            WriteGLXErrorToConsole();
+
+            PlatformUtils.ConsoleWrite("GLX.ChooseVisual()...");
             IntPtr visualInfoPtr = GLX.ChooseVisual(display, screen, attributes);
+            PlatformUtils.ConsoleWriteLine(visualInfoPtr.ToString(), visualInfoPtr != IntPtr.Zero ? ConsoleColor.Green : ConsoleColor.Red);
+            WriteGLXErrorToConsole();
+
+            PlatformUtils.ConsoleWrite("GLX.CreateContext()...");
             context = GLX.CreateContext(display, visualInfoPtr, IntPtr.Zero, true);
-            if (context == IntPtr.Zero)
+            PlatformUtils.ConsoleWriteLine(context.ToString(), context != IntPtr.Zero ? ConsoleColor.Green : ConsoleColor.Red);
+            WriteGLXErrorToConsole();
+
+            if (context == IntPtr.Zero) {
+                PlatformUtils.ConsoleWrite("GLX.CreateContext()...");
                 context = GLX.CreateContext(display, visualInfoPtr, IntPtr.Zero, false);
+                PlatformUtils.ConsoleWriteLine(context.ToString(), context != IntPtr.Zero ? ConsoleColor.Green : ConsoleColor.Red);
+                WriteGLXErrorToConsole();
+            }
+
+            PlatformUtils.ConsoleWrite("GLX.XCreateSimpleWindow()...");
             xWindow = GLX.XCreateSimpleWindow(display, rootWindow, 0, 0, bounds.Width, bounds.Height, 0, 0, Color.White.ToArgb());
+            PlatformUtils.ConsoleWriteLine(xWindow.ToString(), xWindow != IntPtr.Zero ? ConsoleColor.Green : ConsoleColor.Red);
+            WriteGLXErrorToConsole();
+
             if (showWindow)
                 GLX.XMapWindow(display, xWindow);
         }
@@ -327,13 +354,29 @@ namespace DevExpress.XtraCharts.GLGraphics {
                 0, 0
             };
 
+            PlatformUtils.ConsoleWrite("GLX.ChooseFBConfig()...");
             IntPtr fbConfig = GLX.ChooseFBConfig(display, screen, attributes);
+            PlatformUtils.ConsoleWriteLine(fbConfig.ToString(), fbConfig != IntPtr.Zero ? ConsoleColor.Green : ConsoleColor.Red);
+            WriteGLXErrorToConsole();
+
             if (fbConfig != IntPtr.Zero) {
                 try {
+                    PlatformUtils.ConsoleWrite("GLX.CreatePbuffer()...");
                     pBuffer = GLX.CreatePbuffer(display, fbConfig, pBufferAttributes);
+                    PlatformUtils.ConsoleWriteLine(pBuffer.ToString(), pBuffer != IntPtr.Zero ? ConsoleColor.Green : ConsoleColor.Red);
+                    WriteGLXErrorToConsole();
+
+                    PlatformUtils.ConsoleWrite("GLX.CreateNewContext()...");
                     context = GLX.CreateNewContext(display, fbConfig, (int)GLXAttribute.RGBA_TYPE, IntPtr.Zero, true);
-                    if (context == IntPtr.Zero)
+                    PlatformUtils.ConsoleWriteLine(context.ToString(), context != IntPtr.Zero ? ConsoleColor.Green : ConsoleColor.Red);
+                    WriteGLXErrorToConsole();
+
+                    if (context == IntPtr.Zero) {
+                        PlatformUtils.ConsoleWrite("GLX.CreateNewContext()...");
                         context = GLX.CreateNewContext(display, fbConfig, (int)GLXAttribute.RGBA_TYPE, IntPtr.Zero, false);
+                        PlatformUtils.ConsoleWriteLine(context.ToString(), context != IntPtr.Zero ? ConsoleColor.Green : ConsoleColor.Red);
+                        WriteGLXErrorToConsole();
+                    }
                 }
                 catch {
                     if (pBuffer != IntPtr.Zero)
@@ -358,12 +401,18 @@ namespace DevExpress.XtraCharts.GLGraphics {
                 CopyPixels(GL.BGR_EXT, PixelFormat.Format24bppRgb);
         }
         public void Lock() {
-            if (isMultiThread)
+            if (isMultiThread) {
+                PlatformUtils.ConsoleWriteLine("GLX.XOpenDisplay()");
                 GLX.XLockDisplay(display);
+                WriteGLXErrorToConsole();
+            }
         }
         public void Unlock() {
-            if (isMultiThread)
+            if (isMultiThread) {
+                PlatformUtils.ConsoleWriteLine("GLX.XUnlockDisplay()");
                 GLX.XUnlockDisplay(display);
+                WriteGLXErrorToConsole();
+            }
         }
         public void ReleaseCurrent() {
             GLX.MakeCurrent(IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
