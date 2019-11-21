@@ -42,26 +42,34 @@ namespace DevExpress.XtraCharts.GLGraphics {
             if (IsWindows)
                 return new WGLGraphics(graphics, windowDC);
             else if (IsLinux) {
+                IPlatformGraphics glGraphics = null;
+
                 if (EGLGraphics.Available) {
                     EGLGraphics eglGraphics = new EGLGraphics(graphics, bounds);
                     if (eglGraphics.Initialized)
-                        return eglGraphics;
+                        glGraphics = eglGraphics;
                     eglGraphics.Dispose();
                 }
-                try {
-                    PlatformUtils.ConsoleWriteLine("\r\nCreate GLXGraphics...");
-                    return new GLXGraphics(graphics, bounds);
-                }
-                catch (Exception exception) {
-                    PlatformUtils.ConsoleWriteLine(exception.Message, ConsoleColor.Red);
-                    PlatformUtils.ConsoleWriteLine("\r\nCreate OSMesaGraphics...");
+
+                if (glGraphics == null || !glGraphics.Initialized) {
                     try {
-                        return new OSMesaGraphics(graphics, bounds);
+                        glGraphics = new GLXGraphics(graphics, bounds);
                     }
-                    catch (Exception exception2) {
-                        PlatformUtils.ConsoleWriteLine(exception2.Message, ConsoleColor.Red);
+                    catch (Exception exception) {
+                        PlatformUtils.ConsoleWriteLine(exception.Message, ConsoleColor.Red);
                     }
                 }
+
+                if (glGraphics == null || !glGraphics.Initialized) {
+                    try {
+                        glGraphics = new OSMesaGraphics(graphics, bounds);
+                    }
+                    catch (Exception exception) {
+                        PlatformUtils.ConsoleWriteLine(exception.Message, ConsoleColor.Red);
+                    }
+                }
+
+                return glGraphics;
             }
             return null;
         }
