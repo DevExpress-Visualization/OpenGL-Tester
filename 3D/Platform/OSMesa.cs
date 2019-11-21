@@ -22,29 +22,29 @@ namespace DevExpress.XtraCharts.GLGraphics.Platform {
     }
 
     public static class OSMesa {
-        public const int OSMESA_COLOR_INDEX	             = GL.COLOR_INDEX;
-        public const int OSMESA_RGBA		             = GL.RGBA;
-        public const int OSMESA_BGRA		             = 0x1;
-        public const int OSMESA_ARGB		             = 0x2;
-        public const int OSMESA_RGB		                 = GL.RGB;
-        public const int OSMESA_BGR		                 = 0x4;
-        public const int OSMESA_RGB_565		             = 0x5;
-        public const int OSMESA_ROW_LENGTH	             = 0x10;
-        public const int OSMESA_Y_UP		             = 0x11;
-        public const int OSMESA_WIDTH		             = 0x20;
-        public const int OSMESA_HEIGHT	 	             = 0x21;
-        public const int OSMESA_FORMAT		             = 0x22;
-        public const int OSMESA_TYPE		             = 0x23;
-        public const int OSMESA_MAX_WIDTH	             = 0x24;
-        public const int OSMESA_MAX_HEIGHT	             = 0x25;
-        public const int OSMESA_DEPTH_BITS              = 0x30;
-        public const int OSMESA_STENCIL_BITS            = 0x31;
-        public const int OSMESA_ACCUM_BITS              = 0x32;
-        public const int OSMESA_PROFILE                 = 0x33;
-        public const int OSMESA_CORE_PROFILE            = 0x34;
-        public const int OSMESA_COMPAT_PROFILE          = 0x35;
-        public const int OSMESA_CONTEXT_MAJOR_VERSION   = 0x36;
-        public const int OSMESA_CONTEXT_MINOR_VERSION   = 0x37;
+        public const uint OSMESA_COLOR_INDEX	             = GL.COLOR_INDEX;
+        public const uint OSMESA_RGBA		             = GL.RGBA;
+        public const uint OSMESA_BGRA		             = 0x1;
+        public const uint OSMESA_ARGB		             = 0x2;
+        public const uint OSMESA_RGB		                 = GL.RGB;
+        public const uint OSMESA_BGR		                 = 0x4;
+        public const uint OSMESA_RGB_565		             = 0x5;
+        public const uint OSMESA_ROW_LENGTH	             = 0x10;
+        public const uint OSMESA_Y_UP		             = 0x11;
+        public const uint OSMESA_WIDTH		             = 0x20;
+        public const uint OSMESA_HEIGHT	 	             = 0x21;
+        public const uint OSMESA_FORMAT		             = 0x22;
+        public const uint OSMESA_TYPE		             = 0x23;
+        public const uint OSMESA_MAX_WIDTH	             = 0x24;
+        public const uint OSMESA_MAX_HEIGHT	             = 0x25;
+        public const uint OSMESA_DEPTH_BITS              = 0x30;
+        public const uint OSMESA_STENCIL_BITS            = 0x31;
+        public const uint OSMESA_ACCUM_BITS              = 0x32;
+        public const uint OSMESA_PROFILE                 = 0x33;
+        public const uint OSMESA_CORE_PROFILE            = 0x34;
+        public const uint OSMESA_COMPAT_PROFILE          = 0x35;
+        public const uint OSMESA_CONTEXT_MAJOR_VERSION   = 0x36;
+        public const uint OSMESA_CONTEXT_MINOR_VERSION   = 0x37;
         
         public static IntPtr OSMesaCreateContext(uint format, IntPtr shareList) {
             return OSMesaImport.OSMesaCreateContext(format, shareList);
@@ -72,7 +72,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
         readonly Rectangle bounds;
         IntPtr bufferPtr;
         IntPtr context;
-        byte[] buffer;
 
         int BufferSize { get { return bounds.Width * bounds.Height * 4; } }
         public bool Initialized { get { return context != IntPtr.Zero; } }
@@ -82,20 +81,17 @@ namespace DevExpress.XtraCharts.GLGraphics {
             this.graphics = graphics;
             this.bounds = bounds;
 
-            buffer = new byte[BufferSize];
             bufferPtr = Marshal.AllocHGlobal(BufferSize);
-            Marshal.Copy(buffer, 0, bufferPtr, buffer.Length);
 
             PlatformUtils.ConsoleWrite("OSMesa.OSMesaCreateContext()...");
-            context = OSMesa.OSMesaCreateContextExt(OSMesa.OSMESA_RGBA, 16, 8, 8, IntPtr.Zero);
+            context = OSMesa.OSMesaCreateContext(OSMesa.OSMESA_RGBA, IntPtr.Zero);
             PlatformUtils.ConsoleWriteLine(context.ToString());
             WriteGLErrorToConsole();
         }
         public void FinishDrawing() {
             using (Bitmap bitmap = new Bitmap(bounds.Width, bounds.Height)) {
-                Marshal.Copy(bufferPtr, buffer, 0, buffer.Length);
-                BitmapData srcData = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
-                srcData.Scan0 = bufferPtr;
+                BitmapData srcData = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);
+                GL.ReadPixels(0, 0, bitmap.Width, bitmap.Height, GL.RGBA, GL.UNSIGNED_BYTE, srcData.Scan0);
                 bitmap.UnlockBits(srcData);
                 graphics.DrawImageUnscaled(bitmap, Point.Empty);
             }
@@ -105,15 +101,18 @@ namespace DevExpress.XtraCharts.GLGraphics {
         public void Unlock() {
         }
         public void ReleaseCurrent() {
-            OSMesa.OSMesaMakeCurrent(IntPtr.Zero, IntPtr.Zero, OSMesa.OSMESA_RGBA, 0, 0);
         }
         public bool MakeCurrent() {
-            return OSMesa.OSMesaMakeCurrent(context, bufferPtr, OSMesa.OSMESA_RGBA, bounds.Width, bounds.Height);
+            return OSMesa.OSMesaMakeCurrent(context, bufferPtr, GL.UNSIGNED_BYTE, bounds.Width, bounds.Height);
         }
         public void Dispose() {
             if (context != IntPtr.Zero) {
                 OSMesa.OSMesaDestroyContext(context);
                 context = IntPtr.Zero;
+            }
+            if (bufferPtr != IntPtr.Zero) {
+                Marshal.FreeHGlobal(bufferPtr);
+                bufferPtr = IntPtr.Zero;
             }
         }
     }
