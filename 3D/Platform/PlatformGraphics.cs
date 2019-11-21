@@ -48,7 +48,20 @@ namespace DevExpress.XtraCharts.GLGraphics {
                         return eglGraphics;
                     eglGraphics.Dispose();
                 }
-                return new GLXGraphics(graphics, bounds);
+                try {
+                    PlatformUtils.ConsoleWriteLine("\r\nCreate GLXGraphics...");
+                    return new GLXGraphics(graphics, bounds);
+                }
+                catch (Exception exception) {
+                    PlatformUtils.ConsoleWriteLine(exception.Message, ConsoleColor.Red);
+                    PlatformUtils.ConsoleWriteLine("\r\nCreate OSMesaGraphics...");
+                    try {
+                        return new OSMesaGraphics(graphics, bounds);
+                    }
+                    catch (Exception exception2) {
+                        PlatformUtils.ConsoleWriteLine(exception2.Message, ConsoleColor.Red);
+                    }
+                }
             }
             return null;
         }

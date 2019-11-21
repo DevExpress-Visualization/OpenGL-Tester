@@ -249,7 +249,7 @@ namespace DevExpress.XtraCharts.GLGraphics.Platform {
 
 namespace DevExpress.XtraCharts.GLGraphics {
     public class GLXGraphics : IPlatformGraphics {
-        static void WriteGLXErrorToConsole() {
+        static void WriteGLErrorToConsole() {
             int error = GL.GetError();
             PlatformUtils.ConsoleWriteLine("GL Error: " + error.ToString(), error != 0 ? ConsoleColor.Red : ConsoleColor.Green);
         }
@@ -274,18 +274,18 @@ namespace DevExpress.XtraCharts.GLGraphics {
             PlatformUtils.ConsoleWrite("GLX.XInitThreads()>0...");
             isMultiThread = GLX.XInitThreads() > 0;
             PlatformUtils.ConsoleWriteLine(isMultiThread.ToString(), isMultiThread ? ConsoleColor.Green : ConsoleColor.Red);
-            WriteGLXErrorToConsole();
+            WriteGLErrorToConsole();
 
             PlatformUtils.ConsoleWrite("GLX.XOpenDisplay()...");
             display = GLX.XOpenDisplay();
             PlatformUtils.ConsoleWriteLine(display.ToString(), display != IntPtr.Zero ? ConsoleColor.Green : ConsoleColor.Red);
-            WriteGLXErrorToConsole();
+            WriteGLErrorToConsole();
 
             if (display != IntPtr.Zero) {
                 PlatformUtils.ConsoleWrite("GLX.XDefaultScreen()...");
                 int screen = GLX.XDefaultScreen(display);
                 PlatformUtils.ConsoleWriteLine(screen.ToString());
-                WriteGLXErrorToConsole();
+                WriteGLErrorToConsole();
 
                 Lock();
                 if (!CreateGLXOffscreenContext(screen))
@@ -308,29 +308,29 @@ namespace DevExpress.XtraCharts.GLGraphics {
             PlatformUtils.ConsoleWrite("GLX.XRootWindow()...");
             IntPtr rootWindow = GLX.XRootWindow(display, screen);
             PlatformUtils.ConsoleWriteLine(rootWindow.ToString(), rootWindow != IntPtr.Zero ? ConsoleColor.Green : ConsoleColor.Red);
-            WriteGLXErrorToConsole();
+            WriteGLErrorToConsole();
 
             PlatformUtils.ConsoleWrite("GLX.ChooseVisual()...");
             IntPtr visualInfoPtr = GLX.ChooseVisual(display, screen, attributes);
             PlatformUtils.ConsoleWriteLine(visualInfoPtr.ToString(), visualInfoPtr != IntPtr.Zero ? ConsoleColor.Green : ConsoleColor.Red);
-            WriteGLXErrorToConsole();
+            WriteGLErrorToConsole();
 
             PlatformUtils.ConsoleWrite("GLX.CreateContext()...");
             context = GLX.CreateContext(display, visualInfoPtr, IntPtr.Zero, true);
             PlatformUtils.ConsoleWriteLine(context.ToString(), context != IntPtr.Zero ? ConsoleColor.Green : ConsoleColor.Red);
-            WriteGLXErrorToConsole();
+            WriteGLErrorToConsole();
 
             if (context == IntPtr.Zero) {
                 PlatformUtils.ConsoleWrite("GLX.CreateContext()...");
                 context = GLX.CreateContext(display, visualInfoPtr, IntPtr.Zero, false);
                 PlatformUtils.ConsoleWriteLine(context.ToString(), context != IntPtr.Zero ? ConsoleColor.Green : ConsoleColor.Red);
-                WriteGLXErrorToConsole();
+                WriteGLErrorToConsole();
             }
 
             PlatformUtils.ConsoleWrite("GLX.XCreateSimpleWindow()...");
             xWindow = GLX.XCreateSimpleWindow(display, rootWindow, 0, 0, bounds.Width, bounds.Height, 0, 0, Color.White.ToArgb());
             PlatformUtils.ConsoleWriteLine(xWindow.ToString(), xWindow != IntPtr.Zero ? ConsoleColor.Green : ConsoleColor.Red);
-            WriteGLXErrorToConsole();
+            WriteGLErrorToConsole();
 
             if (showWindow)
                 GLX.XMapWindow(display, xWindow);
@@ -359,25 +359,25 @@ namespace DevExpress.XtraCharts.GLGraphics {
             PlatformUtils.ConsoleWrite("GLX.ChooseFBConfig()...");
             IntPtr fbConfig = GLX.ChooseFBConfig(display, screen, attributes);
             PlatformUtils.ConsoleWriteLine(fbConfig.ToString(), fbConfig != IntPtr.Zero ? ConsoleColor.Green : ConsoleColor.Red);
-            WriteGLXErrorToConsole();
+            WriteGLErrorToConsole();
 
             if (fbConfig != IntPtr.Zero) {
                 try {
                     PlatformUtils.ConsoleWrite("GLX.CreatePbuffer()...");
                     pBuffer = GLX.CreatePbuffer(display, fbConfig, pBufferAttributes);
                     PlatformUtils.ConsoleWriteLine(pBuffer.ToString(), pBuffer != IntPtr.Zero ? ConsoleColor.Green : ConsoleColor.Red);
-                    WriteGLXErrorToConsole();
+                    WriteGLErrorToConsole();
 
                     PlatformUtils.ConsoleWrite("GLX.CreateNewContext()...");
                     context = GLX.CreateNewContext(display, fbConfig, (int)GLXAttribute.RGBA_TYPE, IntPtr.Zero, true);
                     PlatformUtils.ConsoleWriteLine(context.ToString(), context != IntPtr.Zero ? ConsoleColor.Green : ConsoleColor.Red);
-                    WriteGLXErrorToConsole();
+                    WriteGLErrorToConsole();
 
                     if (context == IntPtr.Zero) {
                         PlatformUtils.ConsoleWrite("GLX.CreateNewContext()...");
                         context = GLX.CreateNewContext(display, fbConfig, (int)GLXAttribute.RGBA_TYPE, IntPtr.Zero, false);
                         PlatformUtils.ConsoleWriteLine(context.ToString(), context != IntPtr.Zero ? ConsoleColor.Green : ConsoleColor.Red);
-                        WriteGLXErrorToConsole();
+                        WriteGLErrorToConsole();
                     }
                 }
                 catch {
@@ -406,14 +406,14 @@ namespace DevExpress.XtraCharts.GLGraphics {
             if (isMultiThread) {
                 PlatformUtils.ConsoleWriteLine("GLX.XOpenDisplay()");
                 GLX.XLockDisplay(display);
-                WriteGLXErrorToConsole();
+                WriteGLErrorToConsole();
             }
         }
         public void Unlock() {
             if (isMultiThread) {
                 PlatformUtils.ConsoleWriteLine("GLX.XUnlockDisplay()");
                 GLX.XUnlockDisplay(display);
-                WriteGLXErrorToConsole();
+                WriteGLErrorToConsole();
             }
         }
         public void ReleaseCurrent() {

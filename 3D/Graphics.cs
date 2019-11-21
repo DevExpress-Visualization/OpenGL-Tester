@@ -191,7 +191,7 @@ namespace DevExpress.XtraCharts.Native {
                     try {
                         platformGraphics.Lock();
                         GL.Viewport(Bounds.X, bounds.Y, Bounds.Width, Bounds.Height);
-						Color backColor = Color.Black;
+						Color backColor = Color.Magenta;
                         float red, green, blue, alpha;
                         CalculateColorComponents(backColor, out red, out green, out blue, out alpha);
                         GL.ClearColor(red, green, blue, alpha);
