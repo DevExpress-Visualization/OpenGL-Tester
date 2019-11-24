@@ -6,6 +6,7 @@ using System.Security;
 using DevExpress.XtraCharts.Native;
 
 namespace DevExpress.XtraCharts.GLGraphics {
+    [CLSCompliant(false)]
     [SuppressUnmanagedCodeSecurity]
     [SuppressMessage("SpellChecker", "CRRSP01")]
     public class GLImport_Win {
@@ -18,8 +19,14 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport(OpenGL32, EntryPoint = "glDisable")]
         public static extern void Disable(int cap);
         [DllImport(OpenGL32, EntryPoint = "glGetIntegerv")]
+#if DEBUGTEST //DEMO_REMOVE   
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void GetIntegerv(int pname, [Out] int[] param);
         [DllImport(OpenGL32, EntryPoint = "glGetDoublev")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif  //DEMO_REMOVE
         public static extern void GetDoublev(int pname, [Out] double[] param);
         [DllImport(OpenGL32, EntryPoint = "glClearColor")]
         public static extern void ClearColor(float red, float green, float blue, float alpha);
@@ -42,8 +49,14 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport(OpenGL32, EntryPoint = "glLoadIdentity")]
         public static extern void LoadIdentity();
         [DllImport(OpenGL32, EntryPoint = "glLoadMatrixd")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void LoadMatrixd([In] double[] m);
         [DllImport(OpenGL32, EntryPoint = "glMultMatrixd")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void MultMatrixd([In] double[] m);
         [DllImport(OpenGL32, EntryPoint = "glTranslated")]
         public static extern void Translated(double x, double y, double z);
@@ -64,6 +77,9 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport(OpenGL32, EntryPoint = "glColor4b")]
         public static extern void Color4b(byte read, byte green, byte blue, byte alpha);
         [DllImport(OpenGL32, EntryPoint = "glColor4ub")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void Color4ub(byte read, byte green, byte blue, byte alpha);
         [DllImport(OpenGL32, EntryPoint = "glVertex3d")]
         public static extern void Vertex3d(double x, double y, double z);
@@ -86,20 +102,41 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport(OpenGL32, EntryPoint = "glBlendFunc")]
         public static extern void BlendFunc(int sfactor, int dfactor);
         [DllImport(OpenGL32, EntryPoint = "glLightModeli")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void LightModeli(int pname, int param);
         [DllImport(OpenGL32, EntryPoint = "glLightModelfv")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void LightModelfv(int pname, float[] param);
         [DllImport(OpenGL32, EntryPoint = "glLightf")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void Lightf(int light, int pname, float param);
         [DllImport(OpenGL32, EntryPoint = "glLightfv")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void Lightfv(int light, int pname, [In] float[] param);
         [DllImport(OpenGL32, EntryPoint = "glColorMaterial")]
         public static extern void ColorMaterial(int face, int mode);
         [DllImport(OpenGL32, EntryPoint = "glMaterialf")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void Materialf(int face, int pname, float param);
         [DllImport(OpenGL32, EntryPoint = "glMaterialfv")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void Materialfv(int face, int pname, [In] float[] param);
         [DllImport(OpenGL32, EntryPoint = "glPixelStorei")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void PixelStorei(int pname, int param);
         [DllImport(OpenGL32, EntryPoint = "glTexImage1D")]
         public static extern void TexImage1D(int target, int level, int internalformat, int width, int border, int format, int type, [In] float[] pixels);
@@ -120,8 +157,14 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport(OpenGL32, EntryPoint = "glBindTexture")]
         public static extern void BindTexture(int target, uint texture);
         [DllImport(OpenGL32, EntryPoint = "glTexParameteri")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void TexParameteri(int target, int pname, int param);
         [DllImport(OpenGL32, EntryPoint = "glTexEnvf")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void TexEnvf(int target, int pname, float param);
         [DllImport(OpenGL32, EntryPoint = "glHint")]
         public static extern void Hint(int target, int mode);
@@ -130,6 +173,9 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport(OpenGL32, EntryPoint = "glStencilFunc")]
         public static extern void StencilFunc(int func, int refer, uint mask);
         [DllImport(OpenGL32, EntryPoint = "glAccum")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void Accum(int operation, float val);
         [DllImport(OpenGL32, EntryPoint = "glClearAccum")]
         public static extern void ClearAccum(float red, float green, float blue, float alpha);
@@ -140,6 +186,9 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport(OpenGL32, EntryPoint = "glDrawPixels")]
         public static extern void DrawPixels(int width, int height, int format, int type, [In] byte[] pixels);
         [DllImport(OpenGL32, EntryPoint = "glRasterPos2i")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void RasterPosi(int x, int y);
         [DllImport(OpenGL32, EntryPoint = "glReadBuffer")]
         public static extern void ReadBuffer(int mode);
@@ -154,11 +203,15 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport(OpenGL32, EntryPoint = "glDepthMask")]
         public static extern void DepthMask(bool flag);
         [DllImport(OpenGL32, EntryPoint = "glGetBooleanv")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void GetBooleanv(int pname, [Out] bool[] pars);
         [DllImport(OpenGL32, EntryPoint = "glGetError")]
         public static extern int GetError();
     }
 
+    [CLSCompliant (false)]
     [SuppressUnmanagedCodeSecurity]
     [SuppressMessage ("SpellChecker", "CRRSP01")]
     public class GLImport_Linux {
@@ -171,8 +224,14 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport (LibGL, EntryPoint = "glDisable")]
         public static extern void Disable (int cap);
         [DllImport (LibGL, EntryPoint = "glGetIntegerv")]
+#if DEBUGTEST //DEMO_REMOVE   
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void GetIntegerv (int pname, [Out] int [] param);
         [DllImport (LibGL, EntryPoint = "glGetDoublev")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif  //DEMO_REMOVE
         public static extern void GetDoublev (int pname, [Out] double [] param);
         [DllImport (LibGL, EntryPoint = "glClearColor")]
         public static extern void ClearColor (float red, float green, float blue, float alpha);
@@ -195,8 +254,14 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport (LibGL, EntryPoint = "glLoadIdentity")]
         public static extern void LoadIdentity ();
         [DllImport (LibGL, EntryPoint = "glLoadMatrixd")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void LoadMatrixd ([In] double [] m);
         [DllImport (LibGL, EntryPoint = "glMultMatrixd")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void MultMatrixd ([In] double [] m);
         [DllImport (LibGL, EntryPoint = "glTranslated")]
         public static extern void Translated (double x, double y, double z);
@@ -217,6 +282,9 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport (LibGL, EntryPoint = "glColor4b")]
         public static extern void Color4b (byte read, byte green, byte blue, byte alpha);
         [DllImport (LibGL, EntryPoint = "glColor4ub")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void Color4ub (byte read, byte green, byte blue, byte alpha);
         [DllImport (LibGL, EntryPoint = "glVertex3d")]
         public static extern void Vertex3d (double x, double y, double z);
@@ -239,20 +307,41 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport (LibGL, EntryPoint = "glBlendFunc")]
         public static extern void BlendFunc (int sfactor, int dfactor);
         [DllImport (LibGL, EntryPoint = "glLightModeli")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void LightModeli (int pname, int param);
         [DllImport (LibGL, EntryPoint = "glLightModelfv")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void LightModelfv (int pname, float [] param);
         [DllImport (LibGL, EntryPoint = "glLightf")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void Lightf (int light, int pname, float param);
         [DllImport (LibGL, EntryPoint = "glLightfv")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void Lightfv (int light, int pname, [In] float [] param);
         [DllImport (LibGL, EntryPoint = "glColorMaterial")]
         public static extern void ColorMaterial (int face, int mode);
         [DllImport (LibGL, EntryPoint = "glMaterialf")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void Materialf (int face, int pname, float param);
         [DllImport (LibGL, EntryPoint = "glMaterialfv")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void Materialfv (int face, int pname, [In] float [] param);
         [DllImport (LibGL, EntryPoint = "glPixelStorei")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void PixelStorei (int pname, int param);
         [DllImport (LibGL, EntryPoint = "glTexImage1D")]
         public static extern void TexImage1D (int target, int level, int internalformat, int width, int border, int format, int type, [In] float [] pixels);
@@ -273,8 +362,14 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport (LibGL, EntryPoint = "glBindTexture")]
         public static extern void BindTexture (int target, uint texture);
         [DllImport (LibGL, EntryPoint = "glTexParameteri")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void TexParameteri (int target, int pname, int param);
         [DllImport (LibGL, EntryPoint = "glTexEnvf")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void TexEnvf (int target, int pname, float param);
         [DllImport (LibGL, EntryPoint = "glHint")]
         public static extern void Hint (int target, int mode);
@@ -283,6 +378,9 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport (LibGL, EntryPoint = "glStencilFunc")]
         public static extern void StencilFunc (int func, int refer, uint mask);
         [DllImport (LibGL, EntryPoint = "glAccum")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void Accum (int operation, float val);
         [DllImport (LibGL, EntryPoint = "glClearAccum")]
         public static extern void ClearAccum (float red, float green, float blue, float alpha);
@@ -293,6 +391,9 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport (LibGL, EntryPoint = "glDrawPixels")]
         public static extern void DrawPixels (int width, int height, int format, int type, [In] byte [] pixels);
         [DllImport (LibGL, EntryPoint = "glRasterPos2i")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void RasterPosi (int x, int y);
         [DllImport (LibGL, EntryPoint = "glReadBuffer")]
         public static extern void ReadBuffer (int mode);
@@ -307,13 +408,228 @@ namespace DevExpress.XtraCharts.GLGraphics {
         [DllImport (LibGL, EntryPoint = "glDepthMask")]
         public static extern void DepthMask (bool flag);
         [DllImport (LibGL, EntryPoint = "glGetBooleanv")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
         public static extern void GetBooleanv (int pname, [Out] bool [] pars);
         [DllImport (LibGL, EntryPoint = "glGetError")]
         public static extern int GetError ();
     }
 
+    [CLSCompliant (false)]
+    [SuppressUnmanagedCodeSecurity]
+    [SuppressMessage ("SpellChecker", "CRRSP01")]
+    public class GLImport_OSMesa {
+        const string LibGL = "libOSMesa.so.8";
+
+        [DllImport (LibGL, EntryPoint = "glFinish")]
+        public static extern void Finish ();
+        [DllImport (LibGL, EntryPoint = "glEnable")]
+        public static extern void Enable (int cap);
+        [DllImport (LibGL, EntryPoint = "glDisable")]
+        public static extern void Disable (int cap);
+        [DllImport (LibGL, EntryPoint = "glGetIntegerv")]
+#if DEBUGTEST //DEMO_REMOVE   
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
+        public static extern void GetIntegerv (int pname, [Out] int [] param);
+        [DllImport (LibGL, EntryPoint = "glGetDoublev")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif  //DEMO_REMOVE
+        public static extern void GetDoublev (int pname, [Out] double [] param);
+        [DllImport (LibGL, EntryPoint = "glClearColor")]
+        public static extern void ClearColor (float red, float green, float blue, float alpha);
+        [DllImport (LibGL, EntryPoint = "glDepthFunc")]
+        public static extern void DepthFunc (int func);
+        [DllImport (LibGL, EntryPoint = "glClearDepth")]
+        public static extern void ClearDepth (float depth);
+        [DllImport (LibGL, EntryPoint = "glClearStencil")]
+        public static extern void ClearStencil (int s);
+        [DllImport (LibGL, EntryPoint = "glClear")]
+        public static extern void Clear (int mask);
+        [DllImport (LibGL, EntryPoint = "glViewport")]
+        public static extern void Viewport (int x, int y, int width, int height);
+        [DllImport (LibGL, EntryPoint = "glMatrixMode")]
+        public static extern void MatrixMode (int mode);
+        [DllImport (LibGL, EntryPoint = "glPushMatrix")]
+        public static extern void PushMatrix ();
+        [DllImport (LibGL, EntryPoint = "glPopMatrix")]
+        public static extern void PopMatrix ();
+        [DllImport (LibGL, EntryPoint = "glLoadIdentity")]
+        public static extern void LoadIdentity ();
+        [DllImport (LibGL, EntryPoint = "glLoadMatrixd")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
+        public static extern void LoadMatrixd ([In] double [] m);
+        [DllImport (LibGL, EntryPoint = "glMultMatrixd")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
+        public static extern void MultMatrixd ([In] double [] m);
+        [DllImport (LibGL, EntryPoint = "glTranslated")]
+        public static extern void Translated (double x, double y, double z);
+        [DllImport (LibGL, EntryPoint = "glRotated")]
+        public static extern void Rotated (double angle, double x, double y, double z);
+        [DllImport (LibGL, EntryPoint = "glScaled")]
+        public static extern void Scaled (double x, double y, double z);
+        [DllImport (LibGL, EntryPoint = "glOrtho")]
+        public static extern void Ortho (double left, double right, double bottom, double top, double zNear, double zFar);
+        [DllImport (LibGL, EntryPoint = "glFrustum")]
+        public static extern void Frustum (double left, double right, double bottom, double top, double zNear, double zFar);
+        [DllImport (LibGL, EntryPoint = "glBegin")]
+        public static extern void Begin (int mode);
+        [DllImport (LibGL, EntryPoint = "glEnd")]
+        public static extern void End ();
+        [DllImport (LibGL, EntryPoint = "glColor4f")]
+        public static extern void Color4f (float read, float green, float blue, float alpha);
+        [DllImport (LibGL, EntryPoint = "glColor4b")]
+        public static extern void Color4b (byte read, byte green, byte blue, byte alpha);
+        [DllImport (LibGL, EntryPoint = "glColor4ub")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
+        public static extern void Color4ub (byte read, byte green, byte blue, byte alpha);
+        [DllImport (LibGL, EntryPoint = "glVertex3d")]
+        public static extern void Vertex3d (double x, double y, double z);
+        [DllImport (LibGL, EntryPoint = "glNormal3f")]
+        public static extern void Normal3f (float nx, float ny, float nz);
+        [DllImport (LibGL, EntryPoint = "glNormal3d")]
+        public static extern void Normal3d (double nx, double ny, double nz);
+        [DllImport (LibGL, EntryPoint = "glEdgeFlag")]
+        public static extern void EdgeFlag (int flag);
+        [DllImport (LibGL, EntryPoint = "glLineStipple")]
+        public static extern void LineStipple (int factor, ushort pattern);
+        [DllImport (LibGL, EntryPoint = "glLineWidth")]
+        public static extern void LineWidth (float width);
+        [DllImport (LibGL, EntryPoint = "glPointSize")]
+        public static extern void PointSize (float size);
+        [DllImport (LibGL, EntryPoint = "glClipPlane")]
+        public static extern void ClipPlane (int plane, [In] double [] equation);
+        [DllImport (LibGL, EntryPoint = "glShadeModel")]
+        public static extern void ShadeModel (int mode);
+        [DllImport (LibGL, EntryPoint = "glBlendFunc")]
+        public static extern void BlendFunc (int sfactor, int dfactor);
+        [DllImport (LibGL, EntryPoint = "glLightModeli")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
+        public static extern void LightModeli (int pname, int param);
+        [DllImport (LibGL, EntryPoint = "glLightModelfv")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
+        public static extern void LightModelfv (int pname, float [] param);
+        [DllImport (LibGL, EntryPoint = "glLightf")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
+        public static extern void Lightf (int light, int pname, float param);
+        [DllImport (LibGL, EntryPoint = "glLightfv")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
+        public static extern void Lightfv (int light, int pname, [In] float [] param);
+        [DllImport (LibGL, EntryPoint = "glColorMaterial")]
+        public static extern void ColorMaterial (int face, int mode);
+        [DllImport (LibGL, EntryPoint = "glMaterialf")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
+        public static extern void Materialf (int face, int pname, float param);
+        [DllImport (LibGL, EntryPoint = "glMaterialfv")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
+        public static extern void Materialfv (int face, int pname, [In] float [] param);
+        [DllImport (LibGL, EntryPoint = "glPixelStorei")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
+        public static extern void PixelStorei (int pname, int param);
+        [DllImport (LibGL, EntryPoint = "glTexImage1D")]
+        public static extern void TexImage1D (int target, int level, int internalformat, int width, int border, int format, int type, [In] float [] pixels);
+        [DllImport (LibGL, EntryPoint = "glTexImage2D")]
+        public static extern void TexImage2D (int target, int level, int internalformat, int width, int height, int border, int format, int type, byte [] pixels);
+        [DllImport (LibGL, EntryPoint = "glTexImage2D")]
+        public static extern void TexImage2D (int target, int level, int internalformat, int width, int height, int border, int format, int type, IntPtr pixels);
+        [DllImport (LibGL, EntryPoint = "glTexCoord1f")]
+        public static extern void TexCoord1f (float f);
+        [DllImport (LibGL, EntryPoint = "glTexCoord2f")]
+        public static extern void TexCoord2f (float s, float t);
+        [DllImport (LibGL, EntryPoint = "glTexCoord2d")]
+        public static extern void TexCoord2d (double s, double t);
+        [DllImport (LibGL, EntryPoint = "glGenTextures")]
+        public static extern void GenTextures (int n, [Out] uint [] textures);
+        [DllImport (LibGL, EntryPoint = "glDeleteTextures")]
+        public static extern void DeleteTextures (int n, [Out] uint [] textures);
+        [DllImport (LibGL, EntryPoint = "glBindTexture")]
+        public static extern void BindTexture (int target, uint texture);
+        [DllImport (LibGL, EntryPoint = "glTexParameteri")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
+        public static extern void TexParameteri (int target, int pname, int param);
+        [DllImport (LibGL, EntryPoint = "glTexEnvf")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
+        public static extern void TexEnvf (int target, int pname, float param);
+        [DllImport (LibGL, EntryPoint = "glHint")]
+        public static extern void Hint (int target, int mode);
+        [DllImport (LibGL, EntryPoint = "glStencilOp")]
+        public static extern void StencilOp (int fail, int zfail, int zpass);
+        [DllImport (LibGL, EntryPoint = "glStencilFunc")]
+        public static extern void StencilFunc (int func, int refer, uint mask);
+        [DllImport (LibGL, EntryPoint = "glAccum")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
+        public static extern void Accum (int operation, float val);
+        [DllImport (LibGL, EntryPoint = "glClearAccum")]
+        public static extern void ClearAccum (float red, float green, float blue, float alpha);
+        [DllImport (LibGL, EntryPoint = "glReadPixels")]
+        public static extern void ReadPixels (int x, int y, int width, int height, int format, int type, [Out] byte [] pixels);
+        [DllImport (LibGL, EntryPoint = "glReadPixels")]
+        public static extern void ReadPixels (int x, int y, int width, int height, int format, int type, [Out] IntPtr pixels);
+        [DllImport (LibGL, EntryPoint = "glDrawPixels")]
+        public static extern void DrawPixels (int width, int height, int format, int type, [In] byte [] pixels);
+        [DllImport (LibGL, EntryPoint = "glRasterPos2i")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
+        public static extern void RasterPosi (int x, int y);
+        [DllImport (LibGL, EntryPoint = "glReadBuffer")]
+        public static extern void ReadBuffer (int mode);
+        [DllImport (LibGL, EntryPoint = "glDrawBuffer")]
+        public static extern void DrawBuffer (int mode);
+        [DllImport (LibGL, EntryPoint = "glPolygonOffset")]
+        public static extern void PolygonOffset (float factor, float units);
+        [DllImport (LibGL, EntryPoint = "glCullFace")]
+        public static extern void CullFace (int mode);
+        [DllImport (LibGL, EntryPoint = "glColorMask")]
+        public static extern void ColorMask (bool red, bool green, bool blue, bool alpha);
+        [DllImport (LibGL, EntryPoint = "glDepthMask")]
+        public static extern void DepthMask (bool flag);
+        [DllImport (LibGL, EntryPoint = "glGetBooleanv")]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif //DEMO_REMOVE
+        public static extern void GetBooleanv (int pname, [Out] bool [] pars);
+        [DllImport (LibGL, EntryPoint = "glGetError")]
+        public static extern int GetError ();
+    }
+
+    [CLSCompliant(false)]
     [SuppressMessage("SpellChecker", "CRRSP01")]
     public class GL {
+        public enum GLLibrary {
+            Win,
+            LibGL,
+            OSMesa
+        }
+
         public const int BYTE = 0x1400;
         public const int UNSIGNED_BYTE = 0x1401;
         public const int SHORT = 0x1402;
@@ -507,520 +823,1093 @@ namespace DevExpress.XtraCharts.GLGraphics {
 
         public const int STENCIL_BITS = 0x0D57;
 
+        public static GLLibrary Library { get; set; } = GLLibrary.Win;
+
         [SecuritySafeCritical]
         public static void Finish() {
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.Finish();
-            else
-                GLImport_Win.Finish();
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.Finish();
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.Finish();
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.Finish();
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void Enable(int cap) {
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.Enable(cap);
-            else
-                GLImport_Win.Enable(cap);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.Enable(cap);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.Enable(cap);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.Enable(cap);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void Disable(int cap) {
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.Disable(cap);
-            else
-                GLImport_Win.Disable(cap);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.Disable(cap);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_Linux.Disable(cap);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.Disable(cap);
+                    break;
+            }
         }
         [SecuritySafeCritical]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif  //DEMO_REMOVE
         public static void GetIntegerv(int pname, int[] param) {
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.GetIntegerv(pname, param);
-            else
-                GLImport_Win.GetIntegerv(pname, param);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.GetIntegerv(pname, param);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.GetIntegerv(pname, param);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.GetIntegerv(pname, param);
+                    break;
+            }
         }
         [SecuritySafeCritical]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif  //DEMO_REMOVE
         public static void GetDoublev(int pname, [Out] double[] param) {
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.GetDoublev(pname, param);
-            else
-                GLImport_Win.GetDoublev(pname, param);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.GetDoublev(pname, param);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.GetDoublev(pname, param);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.GetDoublev(pname, param);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void ClearColor(float red, float green, float blue, float alpha) {
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.ClearColor(red, green, blue, alpha);
-            else
-                GLImport_Win.ClearColor(red, green, blue, alpha);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.ClearColor(red, green, blue, alpha);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.ClearColor(red, green, blue, alpha);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.ClearColor(red, green, blue, alpha);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void DepthFunc(int func) {
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.DepthFunc(func);
-            else
-                GLImport_Win.DepthFunc(func);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.DepthFunc(func);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.DepthFunc(func);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.DepthFunc(func);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void ClearDepth(float depth) {
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.ClearDepth(depth);
-            else
-                GLImport_Win.ClearDepth(depth);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.ClearDepth(depth);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.ClearDepth(depth);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.ClearDepth(depth);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void ClearStencil(int s) {
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.ClearStencil(s);
-            else
-                GLImport_Win.ClearStencil(s);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.ClearStencil(s);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.ClearStencil(s);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.ClearStencil(s);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void Clear(int mask) {
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.Clear(mask);
-            else
-                GLImport_Win.Clear(mask);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.Clear(mask);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.Clear(mask);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.Clear(mask);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void Viewport(int x, int y, int width, int height) {
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.Viewport(x, y, width, height);
-            else
-                GLImport_Win.Viewport(x, y, width, height);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.Viewport(x, y, width, height);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.Viewport(x, y, width, height);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.Viewport(x, y, width, height);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void MatrixMode(int mode) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.MatrixMode(mode); 
-            else
-                GLImport_Win.MatrixMode(mode); 
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.MatrixMode(mode); 
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.MatrixMode(mode); 
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.MatrixMode(mode); 
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void PushMatrix() {
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.PushMatrix(); 
-            else
-                GLImport_Win.PushMatrix(); 
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.PushMatrix(); 
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.PushMatrix(); 
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.PushMatrix(); 
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void PopMatrix() {
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.PopMatrix(); 
-            else
-                GLImport_Win.PopMatrix(); 
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.PopMatrix(); 
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.PopMatrix(); 
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.PopMatrix(); 
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void LoadIdentity() {
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.LoadIdentity(); 
-            else
-                GLImport_Win.LoadIdentity(); 
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.LoadIdentity(); 
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.LoadIdentity(); 
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.LoadIdentity(); 
+                    break;
+            }
         }
         [SecuritySafeCritical]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif  //DEMO_REMOVE
         public static void LoadMatrixd([In] double[] m) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.LoadMatrixd(m);
-            else
-                GLImport_Win.LoadMatrixd(m);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.LoadMatrixd(m);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.LoadMatrixd(m);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.LoadMatrixd(m);
+                    break;
+            }
         }
         [SecuritySafeCritical]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif  //DEMO_REMOVE
         public static void MultMatrixd([In] double[] m) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.MultMatrixd(m); 
-            else
-                GLImport_Win.MultMatrixd(m); 
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.MultMatrixd(m); 
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.MultMatrixd(m); 
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.MultMatrixd(m); 
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void Translated(double x, double y, double z) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.Translated(x, y, z);
-            else
-                GLImport_Win.Translated(x, y, z);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.Translated(x, y, z);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.Translated(x, y, z);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.Translated(x, y, z);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void Rotated(double angle, double x, double y, double z) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.Rotated(angle, x, y, z);
-            else
-                GLImport_Win.Rotated(angle, x, y, z);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.Rotated(angle, x, y, z);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.Rotated(angle, x, y, z);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.Rotated(angle, x, y, z);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void Scaled(double x, double y, double z) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.Scaled(x, y, z);
-            else
-                GLImport_Win.Scaled(x, y, z);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.Scaled(x, y, z);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.Scaled(x, y, z);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.Scaled(x, y, z);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void Ortho(double left, double right, double bottom, double top, double zNear, double zFar) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.Ortho(left, right, bottom, top, zNear, zFar); 
-            else
-                GLImport_Win.Ortho(left, right, bottom, top, zNear, zFar); 
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.Ortho(left, right, bottom, top, zNear, zFar); 
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.Ortho(left, right, bottom, top, zNear, zFar); 
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.Ortho(left, right, bottom, top, zNear, zFar); 
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void Frustum(double left, double right, double bottom, double top, double zNear, double zFar) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.Frustum(left, right, bottom, top, zNear, zFar); 
-            else
-                GLImport_Win.Frustum(left, right, bottom, top, zNear, zFar); 
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.Frustum(left, right, bottom, top, zNear, zFar); 
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.Frustum(left, right, bottom, top, zNear, zFar); 
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.Frustum(left, right, bottom, top, zNear, zFar); 
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void Begin(int mode) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.Begin(mode); 
-            else
-                GLImport_Win.Begin(mode); 
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.Begin(mode); 
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.Begin(mode); 
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.Begin(mode); 
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void End() {
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.End();
-            else
-                GLImport_Win.End();
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.End();
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.End();
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.End();
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void Color4f(float read, float green, float blue, float alpha) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.Color4f(read, green, blue, alpha);
-            else
-                GLImport_Win.Color4f(read, green, blue, alpha);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.Color4f(read, green, blue, alpha);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.Color4f(read, green, blue, alpha);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.Color4f(read, green, blue, alpha);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void Color4b(byte read, byte green, byte blue, byte alpha) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.Color4b(read, green, blue, alpha);
-            else
-                GLImport_Win.Color4b(read, green, blue, alpha);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.Color4b(read, green, blue, alpha);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.Color4b(read, green, blue, alpha);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.Color4b(read, green, blue, alpha);
+                    break;
+            }
         }
         [SecuritySafeCritical]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif  //DEMO_REMOVE
         public static void Color4ub(byte read, byte green, byte blue, byte alpha) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.Color4ub(read, green, blue, alpha); 
-            else
-                GLImport_Win.Color4ub(read, green, blue, alpha); 
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.Color4ub(read, green, blue, alpha); 
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.Color4ub(read, green, blue, alpha); 
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.Color4ub(read, green, blue, alpha); 
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void Vertex3d(double x, double y, double z) {
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.Vertex3d(x, y, z);
-            else
-                GLImport_Win.Vertex3d(x, y, z);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.Vertex3d(x, y, z);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.Vertex3d(x, y, z);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.Vertex3d(x, y, z);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void Normal3f(float nx, float ny, float nz) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.Normal3f(nx, ny, nz);
-            else
-                GLImport_Win.Normal3f(nx, ny, nz);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.Normal3f(nx, ny, nz);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.Normal3f(nx, ny, nz);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.Normal3f(nx, ny, nz);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void Normal3d(double nx, double ny, double nz) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.Normal3d(nx, ny, nz);
-            else
-                GLImport_Win.Normal3d(nx, ny, nz);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.Normal3d(nx, ny, nz);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.Normal3d(nx, ny, nz);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.Normal3d(nx, ny, nz);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void EdgeFlag(int flag) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.EdgeFlag(flag);
-            else
-                GLImport_Win.EdgeFlag(flag);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.EdgeFlag(flag);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.EdgeFlag(flag);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.EdgeFlag(flag);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void LineStipple(int factor, ushort pattern) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.LineStipple(factor, pattern);
-            else
-                GLImport_Win.LineStipple(factor, pattern);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.LineStipple(factor, pattern);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.LineStipple(factor, pattern);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.LineStipple(factor, pattern);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void LineWidth(float width) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.LineWidth(width);
-            else
-                GLImport_Win.LineWidth(width);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.LineWidth(width);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.LineWidth(width);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.LineWidth(width);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void PointSize(float size) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.PointSize(size);
-            else
-                GLImport_Win.PointSize(size);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.PointSize(size);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.PointSize(size);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.PointSize(size);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void ClipPlane(int plane, double[] equation) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.ClipPlane(plane, equation);
-            else
-                GLImport_Win.ClipPlane(plane, equation);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.ClipPlane(plane, equation);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.ClipPlane(plane, equation);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.ClipPlane(plane, equation);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void ShadeModel(int mode) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.ShadeModel(mode);
-            else
-                GLImport_Win.ShadeModel(mode);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.ShadeModel(mode);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.ShadeModel(mode);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.ShadeModel(mode);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void BlendFunc(int sfactor, int dfactor) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.BlendFunc(sfactor, dfactor);
-            else
-                GLImport_Win.BlendFunc(sfactor, dfactor);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.BlendFunc(sfactor, dfactor);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.BlendFunc(sfactor, dfactor);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.BlendFunc(sfactor, dfactor);
+                    break;
+            }
         }
         [SecuritySafeCritical]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif  //DEMO_REMOVE
         public static void LightModeli(int pname, int param) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.LightModeli(pname, param);
-            else
-                GLImport_Win.LightModeli(pname, param);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.LightModeli(pname, param);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.LightModeli(pname, param);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.LightModeli(pname, param);
+                    break;
+            }
         }
         [SecuritySafeCritical]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif  //DEMO_REMOVE
         public static void LightModelfv(int pname, float[] param) {
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.LightModelfv(pname, param);
-            else
-                GLImport_Win.LightModelfv(pname, param);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.LightModelfv(pname, param);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.LightModelfv(pname, param);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.LightModelfv(pname, param);
+                    break;
+            }
         }
         [SecuritySafeCritical]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif  //DEMO_REMOVE
         public static void Lightf(int light, int pname, float param) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.Lightf(light, pname, param);
-            else
-                GLImport_Win.Lightf(light, pname, param);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.Lightf(light, pname, param);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.Lightf(light, pname, param);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.Lightf(light, pname, param);
+                    break;
+            }
         }
         [SecuritySafeCritical]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif  //DEMO_REMOVE
         public static void Lightfv(int light, int pname, float[] param) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.Lightfv(light, pname, param);
-            else
-                GLImport_Win.Lightfv(light, pname, param);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.Lightfv(light, pname, param);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.Lightfv(light, pname, param);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.Lightfv(light, pname, param);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void ColorMaterial(int face, int mode) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.ColorMaterial(face, mode); 
-            else
-                GLImport_Win.ColorMaterial(face, mode);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.ColorMaterial(face, mode); 
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.ColorMaterial(face, mode); 
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.ColorMaterial(face, mode);
+                    break;
+            }
         }
         [SecuritySafeCritical]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif  //DEMO_REMOVE
         public static void Materialf(int face, int pname, float param) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.Materialf(face, pname, param);
-            else
-                GLImport_Win.Materialf(face, pname, param);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.Materialf(face, pname, param);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.Materialf(face, pname, param);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.Materialf(face, pname, param);
+                    break;
+            }
         }
         [SecuritySafeCritical]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif  //DEMO_REMOVE
         public static void Materialfv(int face, int pname, float[] param) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.Materialfv(face, pname, param);
-            else
-                GLImport_Win.Materialfv(face, pname, param);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.Materialfv(face, pname, param);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.Materialfv(face, pname, param);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.Materialfv(face, pname, param);
+                    break;
+            }
         }
         [SecuritySafeCritical]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif  //DEMO_REMOVE
         public static void PixelStorei(int pname, int param) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.PixelStorei(pname, param);
-            else
-                GLImport_Win.PixelStorei(pname, param);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.PixelStorei(pname, param);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.PixelStorei(pname, param);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.PixelStorei(pname, param);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void TexImage1D(int target, int level, int internalformat, int width, int border, int format, int type, float[] pixels) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.TexImage1D(target, level, internalformat, width, border, format, type, pixels);
-            else
-                GLImport_Win.TexImage1D(target, level, internalformat, width, border, format, type, pixels);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.TexImage1D(target, level, internalformat, width, border, format, type, pixels);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.TexImage1D(target, level, internalformat, width, border, format, type, pixels);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.TexImage1D(target, level, internalformat, width, border, format, type, pixels);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void TexImage2D(int target, int level, int internalformat, int width, int height, int border, int format, int type, byte[] pixels) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.TexImage2D(target, level, internalformat, width, height, border, format, type, pixels); 
-            else
-                GLImport_Win.TexImage2D(target, level, internalformat, width, height, border, format, type, pixels); 
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.TexImage2D(target, level, internalformat, width, height, border, format, type, pixels); 
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.TexImage2D(target, level, internalformat, width, height, border, format, type, pixels); 
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.TexImage2D(target, level, internalformat, width, height, border, format, type, pixels); 
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void TexImage2D(int target, int level, int internalformat, int width, int height, int border, int format, int type, IntPtr pixels) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.TexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
-            else
-                GLImport_Win.TexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.TexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.TexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.TexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void TexCoord1f(float f) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.TexCoord1f(f);
-            else
-                GLImport_Win.TexCoord1f(f);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.TexCoord1f(f);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.TexCoord1f(f);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.TexCoord1f(f);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void TexCoord2f(float s, float t) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.TexCoord2f(s, t);
-            else
-                GLImport_Win.TexCoord2f(s, t);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.TexCoord2f(s, t);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.TexCoord2f(s, t);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.TexCoord2f(s, t);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void TexCoord2d(double s, double t) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.TexCoord2d(s, t);
-            else
-                GLImport_Win.TexCoord2d(s, t);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.TexCoord2d(s, t);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.TexCoord2d(s, t);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.TexCoord2d(s, t);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void GenTextures(int n, uint[] textures) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.GenTextures(n, textures);
-            else
-                GLImport_Win.GenTextures(n, textures);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.GenTextures(n, textures);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.GenTextures(n, textures);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.GenTextures(n, textures);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void DeleteTextures(int n, uint[] textures) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.DeleteTextures(n, textures);
-            else
-                GLImport_Win.DeleteTextures(n, textures);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.DeleteTextures(n, textures);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.DeleteTextures(n, textures);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.DeleteTextures(n, textures);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void BindTexture(int target, uint texture) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.BindTexture(target, texture);
-            else
-                GLImport_Win.BindTexture(target, texture);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.BindTexture(target, texture);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.BindTexture(target, texture);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.BindTexture(target, texture);
+                    break;
+            }
         }
         [SecuritySafeCritical]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif  //DEMO_REMOVE
         public static void TexParameteri(int target, int pname, int param) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.TexParameteri(target, pname, param);
-            else
-                GLImport_Win.TexParameteri(target, pname, param);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.TexParameteri(target, pname, param);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.TexParameteri(target, pname, param);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.TexParameteri(target, pname, param);
+                    break;
+            }
         }
         [SecuritySafeCritical]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif  //DEMO_REMOVE
         public static void TexEnvf(int target, int pname, float param) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.TexEnvf(target, pname, param);
-            else
-                GLImport_Win.TexEnvf(target, pname, param);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.TexEnvf(target, pname, param);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.TexEnvf(target, pname, param);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.TexEnvf(target, pname, param);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void Hint(int target, int mode) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.Hint(target, mode); 
-            else
-                GLImport_Win.Hint(target, mode); 
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.Hint(target, mode); 
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.Hint(target, mode); 
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.Hint(target, mode); 
+                    break;
+            }
         }
         [SecuritySafeCritical]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif  //DEMO_REMOVE
         public static void StencilOp(int fail, int zfail, int zpass) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.StencilOp(fail, zfail, zpass);
-            else
-                GLImport_Win.StencilOp(fail, zfail, zpass);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.StencilOp(fail, zfail, zpass);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.StencilOp(fail, zfail, zpass);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.StencilOp(fail, zfail, zpass);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void StencilFunc(int func, int refer, uint mask) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.StencilFunc(func, refer, mask);
-            else
-                GLImport_Win.StencilFunc(func, refer, mask);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.StencilFunc(func, refer, mask);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.StencilFunc(func, refer, mask);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.StencilFunc(func, refer, mask);
+                    break;
+            }
         }
         [SecuritySafeCritical]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif  //DEMO_REMOVE
         public static void Accum(int operation, float val) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.Accum(operation, val);
-            else
-                GLImport_Win.Accum(operation, val);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.Accum(operation, val);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.Accum(operation, val);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.Accum(operation, val);
+                    break;
+            }
         }
         [SecuritySafeCritical]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif  //DEMO_REMOVE
         public static void ClearAccum(float red, float green, float blue, float alpha) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.ClearAccum(red, green, blue, alpha);
-            else
-                GLImport_Win.ClearAccum(red, green, blue, alpha);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.ClearAccum(red, green, blue, alpha);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.ClearAccum(red, green, blue, alpha);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.ClearAccum(red, green, blue, alpha);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void ReadPixels(int x, int y, int width, int height, int format, int type, byte[] pixels) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.ReadPixels(x, y, width, height, format, type, pixels);
-            else
-                GLImport_Win.ReadPixels(x, y, width, height, format, type, pixels);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.ReadPixels(x, y, width, height, format, type, pixels);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.ReadPixels(x, y, width, height, format, type, pixels);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.ReadPixels(x, y, width, height, format, type, pixels);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void ReadPixels(int x, int y, int width, int height, int format, int type, IntPtr pixels) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.ReadPixels(x, y, width, height, format, type, pixels);
-            else
-                GLImport_Win.ReadPixels(x, y, width, height, format, type, pixels);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.ReadPixels(x, y, width, height, format, type, pixels);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.ReadPixels(x, y, width, height, format, type, pixels);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.ReadPixels(x, y, width, height, format, type, pixels);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void DrawPixels(int width, int height, int format, int type, byte[] pixels) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.DrawPixels(width, height, format, type, pixels);
-            else
-                GLImport_Win.DrawPixels(width, height, format, type, pixels);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.DrawPixels(width, height, format, type, pixels);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.DrawPixels(width, height, format, type, pixels);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.DrawPixels(width, height, format, type, pixels);
+                    break;
+            }
         }
         [SecuritySafeCritical]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif  //DEMO_REMOVE
         public static void RasterPosi(int x, int y) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.RasterPosi(x, y);
-            else
-                GLImport_Win.RasterPosi(x, y);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.RasterPosi(x, y);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.RasterPosi(x, y);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.RasterPosi(x, y);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void ReadBuffer(int mode) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.ReadBuffer(mode);
-            else
-                GLImport_Win.ReadBuffer(mode);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.ReadBuffer(mode);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.ReadBuffer(mode);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.ReadBuffer(mode);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void DrawBuffer(int mode) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.DrawBuffer(mode);
-            else
-            GLImport_Win.DrawBuffer(mode);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.DrawBuffer(mode);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.DrawBuffer(mode);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.DrawBuffer(mode);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void PolygonOffset(float factor, float units) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.PolygonOffset(factor, units);
-            else
-                GLImport_Win.PolygonOffset(factor, units);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.PolygonOffset(factor, units);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.PolygonOffset(factor, units);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.PolygonOffset(factor, units);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void CullFace(int mode) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.CullFace(mode);
-            else
-                GLImport_Win.CullFace(mode);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.CullFace(mode);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.CullFace(mode);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.CullFace(mode);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void ColorMask(bool red, bool green, bool blue, bool alpha) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.ColorMask(red, green, blue, alpha);
-            else
-                GLImport_Win.ColorMask(red, green, blue, alpha);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.ColorMask(red, green, blue, alpha);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.ColorMask(red, green, blue, alpha);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.ColorMask(red, green, blue, alpha);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static void DepthMask(bool flag) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.DepthMask(flag);
-            else
-                GLImport_Win.DepthMask(flag);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.DepthMask(flag);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.DepthMask(flag);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.DepthMask(flag);
+                    break;
+            }
         }
         [SecuritySafeCritical]
+#if DEBUGTEST //DEMO_REMOVE
+        [FxCopSpellCheckingIgnore] //DEMO_REMOVE
+#endif  //DEMO_REMOVE
         public static void GetBooleanv(int pname, bool[] pars) { 
-            if (PlatformUtils.IsLinux)
-                GLImport_Linux.GetBooleanv(pname, pars);
-            else
-                GLImport_Win.GetBooleanv(pname, pars);
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    GLImport_Linux.GetBooleanv(pname, pars);
+                    break;
+                case GLLibrary.OSMesa:
+                    GLImport_OSMesa.GetBooleanv(pname, pars);
+                    break;
+                case GLLibrary.Win:
+                    GLImport_Win.GetBooleanv(pname, pars);
+                    break;
+            }
         }
         [SecuritySafeCritical]
         public static int GetError() {
-            if (PlatformUtils.IsLinux)
-                return GLImport_Linux.GetError();
-            return GLImport_Win.GetError();
+            switch (Library) {
+                case GLLibrary.LibGL:
+                    return GLImport_Linux.GetError();
+                case GLLibrary.OSMesa:
+                    return GLImport_OSMesa.GetError();
+                case GLLibrary.Win:
+                default:
+                    return GLImport_Win.GetError();
+            }
         }
     }
 
+    [CLSCompliant(false)]
     [SuppressUnmanagedCodeSecurity]
     [SuppressMessage("SpellChecker", "CRRSP01")]
+#if DEBUGTEST //DEMO_REMOVE
+    [FxCopSpellCheckingIgnore]//DEMO_REMOVE
+#endif  //DEMO_REMOVE
     public class GLUImport_Win {
         const string Glu32 = "glu32.dll";
 
@@ -1070,8 +1959,12 @@ namespace DevExpress.XtraCharts.GLGraphics {
         public static extern void DeleteTess(IntPtr tess);
     }
 
+    [CLSCompliant(false)]
     [SuppressUnmanagedCodeSecurity]
     [SuppressMessage("SpellChecker", "CRRSP01")]
+#if DEBUGTEST //DEMO_REMOVE
+    [FxCopSpellCheckingIgnore]//DEMO_REMOVE
+#endif  //DEMO_REMOVE
     public class GLUImport_Linux {
         const string LibGLU = "libGLU.so.1";
 

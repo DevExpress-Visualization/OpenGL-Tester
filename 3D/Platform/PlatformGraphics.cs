@@ -39,20 +39,25 @@ namespace DevExpress.XtraCharts.GLGraphics {
             ConsoleWriteLine(error, ConsoleColor.Red);
         }
         public static IPlatformGraphics CreatePlatformGraphics(Graphics graphics, Rectangle bounds, IntPtr windowDC) {
-            if (IsWindows)
+            if (IsWindows) {
+                GL.Library = GL.GLLibrary.Win;
                 return new WGLGraphics(graphics, windowDC);
+            }
             else if (IsLinux) {
                 IPlatformGraphics glGraphics = null;
 
                 if (EGLGraphics.Available) {
+                    GL.Library = GL.GLLibrary.LibGL;
                     EGLGraphics eglGraphics = new EGLGraphics(graphics, bounds);
                     if (eglGraphics.Initialized)
                         glGraphics = eglGraphics;
-                    eglGraphics.Dispose();
+                    else
+                        eglGraphics.Dispose();
                 }
 
                 if (glGraphics == null || !glGraphics.Initialized) {
                     try {
+                        GL.Library = GL.GLLibrary.LibGL;
                         glGraphics = new GLXGraphics(graphics, bounds);
                     }
                     catch (Exception exception) {
@@ -62,6 +67,7 @@ namespace DevExpress.XtraCharts.GLGraphics {
 
                 if (glGraphics == null || !glGraphics.Initialized) {
                     try {
+                        GL.Library = GL.GLLibrary.OSMesa;
                         glGraphics = new OSMesaGraphics(graphics, bounds);
                     }
                     catch (Exception exception) {
