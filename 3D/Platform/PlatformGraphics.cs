@@ -46,15 +46,6 @@ namespace DevExpress.XtraCharts.GLGraphics {
             else if (IsLinux) {
                 IPlatformGraphics glGraphics = null;
 
-                if (EGLGraphics.Available) {
-                    GL.Library = GL.GLLibrary.LibGL;
-                    EGLGraphics eglGraphics = new EGLGraphics(graphics, bounds);
-                    if (eglGraphics.Initialized)
-                        glGraphics = eglGraphics;
-                    else
-                        eglGraphics.Dispose();
-                }
-
                 if (glGraphics == null || !glGraphics.Initialized) {
                     try {
                         GL.Library = GL.GLLibrary.LibGL;
@@ -63,6 +54,15 @@ namespace DevExpress.XtraCharts.GLGraphics {
                     catch (Exception exception) {
                         PlatformUtils.ConsoleWriteLine(exception.Message, ConsoleColor.Red);
                     }
+                }
+
+                if (EGLGraphics.Available) {
+                    GL.Library = GL.GLLibrary.LibGL;
+                    EGLGraphics eglGraphics = new EGLGraphics(graphics, bounds);
+                    if (eglGraphics.Initialized)
+                        glGraphics = eglGraphics;
+                    else
+                        eglGraphics.Dispose();
                 }
 
                 if (glGraphics == null || !glGraphics.Initialized) {
