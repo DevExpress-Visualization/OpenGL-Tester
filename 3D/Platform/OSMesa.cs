@@ -91,7 +91,7 @@ namespace DevExpress.XtraCharts.GLGraphics {
         public void FinishDrawing() {
             using (Bitmap bitmap = new Bitmap(bounds.Width, bounds.Height)) {
                 BitmapData srcData = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);
-                GL.ReadPixels(0, 0, bitmap.Width, bitmap.Height, GL.RGBA, GL.UNSIGNED_BYTE, srcData.Scan0);
+                GL.ReadPixels(0, 0, bitmap.Width, bitmap.Height, GL.BGRA_EXT, GL.UNSIGNED_BYTE, srcData.Scan0);
                 bitmap.UnlockBits(srcData);
                 graphics.DrawImageUnscaled(bitmap, Point.Empty);
             }
