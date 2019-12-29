@@ -9,7 +9,7 @@ using DevExpress.XtraCharts.GLGraphics.Platform;
 namespace DevExpress.XtraCharts.GLGraphics.Platform {
     [SuppressMessage("SpellChecker", "CRRSP01")]
     public class GLXImport {
-        const string LibX11 = "libX11.so";
+        const string LibX11 = "libX11.so.6";
         const string LibGL= "libGL.so.1";
 
         [DllImport(LibX11, EntryPoint = "XInitThreads")]
